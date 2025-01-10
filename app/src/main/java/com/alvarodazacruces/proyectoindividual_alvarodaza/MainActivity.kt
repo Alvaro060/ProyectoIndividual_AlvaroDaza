@@ -36,7 +36,7 @@ fun MiAplicacion() {
     var mostrarPantallaPerro by remember { mutableStateOf(false) }
 
     if (mostrarPantallaPerro) {
-        DogScreen()
+        PantallaPerro()
     } else {
         MainScreen(onButtonClick = { mostrarPantallaPerro = true })
     }
@@ -58,7 +58,7 @@ fun MainScreen(onButtonClick: () -> Unit) {
 }
 
 @Composable
-fun DogScreen() {
+fun PantallaPerro() {
     val coroutineScope = rememberCoroutineScope()
     var dogMediaUrl by remember { mutableStateOf("") }
     var isVideo by remember { mutableStateOf(false) }
