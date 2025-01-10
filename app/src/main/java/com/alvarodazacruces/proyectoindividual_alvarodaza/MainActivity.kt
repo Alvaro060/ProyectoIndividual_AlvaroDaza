@@ -129,7 +129,7 @@ fun PantallaPerro() {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Button(onClick = { cargarNuevoPerro() }) {
-                    Text(text = "Ver Otro Perro")
+                    Text(text = "Ver otro Perro")
                 }
             }
         }

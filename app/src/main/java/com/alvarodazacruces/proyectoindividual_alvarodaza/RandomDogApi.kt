@@ -4,7 +4,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface InterfazRandomDogApi {
+interface InterfazzRandomDogApi {
     @GET("woof.json")
     suspend fun getRandomDogMedia(): RespuestaRandomDog
 }
@@ -20,7 +20,7 @@ object RandomDogApi {
         .build()
 
     // Instancia de la API
-    val retrofitService: InterfazRandomDogApi by lazy {
-        retrofit.create(InterfazRandomDogApi::class.java)
+    val retrofitService: InterfazzRandomDogApi by lazy {
+        retrofit.create(InterfazzRandomDogApi::class.java)
     }
 }
