@@ -74,7 +74,6 @@ fun PantallaPerro() {
         }
     }
 
-    // Llamamos a loadNewDog al cargar la pantalla por primera vez
     LaunchedEffect(Unit) {
         cargarNuevoPerro()
     }
@@ -82,48 +81,45 @@ fun PantallaPerro() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFE0F7FA)) // Color más suave que combina con el botón
+            .background(Color(0xFFE0F7FA))
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
         if (isLoading) {
-            // Hacemos el círculo más grande y visible
             CircularProgressIndicator(
-                modifier = Modifier.size(100.dp), // Aumenta el tamaño del círculo
-                strokeWidth = 8.dp // Aumenta el grosor de la línea del círculo
+                modifier = Modifier.size(100.dp),
+                strokeWidth = 8.dp
             )
         } else {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
-                // Título con recuadro estilo botón
                 Box(
                     modifier = Modifier
                         .padding(bottom = 16.dp)
                         .background(
-                            color = MaterialTheme.colorScheme.primary, // Color del fondo
-                            shape = RoundedCornerShape(12.dp) // Bordes redondeados
+                            color = MaterialTheme.colorScheme.primary,
+                            shape = RoundedCornerShape(12.dp)
                         )
-                        .padding(16.dp) // Padding interno del recuadro
+                        .padding(16.dp)
                 ) {
                     Text(
                         text = "Random.Dog",
                         style = TextStyle(
                             fontWeight = FontWeight.Bold,
                             fontSize = 30.sp,
-                            color = Color.White, // Color del texto blanco
+                            color = Color.White,
                         )
                     )
                 }
 
-                // Mostrar el contenido (foto o video)
                 if (isVideo) {
-                    BasicText(text = "Es un video: $dogMediaUrl") // Mostrar URL del video
+                    BasicText(text = "Es un video: $dogMediaUrl")
                 } else {
                     AsyncImage(
                         model = dogMediaUrl,
-                        contentDescription = "Dog Image",
+                        contentDescription = "Imagen De Un Perro",
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(300.dp)
@@ -132,9 +128,8 @@ fun PantallaPerro() {
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                // Botón para cargar un nuevo perro
                 Button(onClick = { cargarNuevoPerro() }) {
-                    Text(text = "Ver otro perro")
+                    Text(text = "Ver Otro Perro")
                 }
             }
         }
