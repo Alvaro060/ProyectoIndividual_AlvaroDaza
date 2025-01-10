@@ -26,13 +26,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            MyApp()
+            MiAplicacion()
         }
     }
 }
 
 @Composable
-fun MyApp() {
+fun MiAplicacion() {
     var showDogScreen by remember { mutableStateOf(false) }
 
     if (showDogScreen) {
