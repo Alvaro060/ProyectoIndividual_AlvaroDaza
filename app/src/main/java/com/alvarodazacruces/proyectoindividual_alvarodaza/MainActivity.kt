@@ -33,12 +33,12 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MiAplicacion() {
-    var showDogScreen by remember { mutableStateOf(false) }
+    var mostrarPantallaPerro by remember { mutableStateOf(false) }
 
-    if (showDogScreen) {
+    if (mostrarPantallaPerro) {
         DogScreen()
     } else {
-        MainScreen(onButtonClick = { showDogScreen = true })
+        MainScreen(onButtonClick = { mostrarPantallaPerro = true })
     }
 }
 
