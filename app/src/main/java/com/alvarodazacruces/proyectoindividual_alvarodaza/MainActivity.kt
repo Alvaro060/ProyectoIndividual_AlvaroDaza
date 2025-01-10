@@ -47,12 +47,12 @@ fun MainScreen(onButtonClick: () -> Unit) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color(0xFFE0F7FA)) // Color más suave que combina con el botón
+            .background(Color(0xFFE0F7FA))
             .padding(16.dp),
         contentAlignment = Alignment.Center
     ) {
         Button(onClick = onButtonClick) {
-            Text(text = "Ver imágenes de perros")
+            Text(text = "Ver Imágenes De Perros")
         }
     }
 }
@@ -62,22 +62,21 @@ fun PantallaPerro() {
     val coroutineScope = rememberCoroutineScope()
     var dogMediaUrl by remember { mutableStateOf("") }
     var isVideo by remember { mutableStateOf(false) }
-    var isLoading by remember { mutableStateOf(false) } // Estado para manejar la carga
+    var isLoading by remember { mutableStateOf(false) }
 
-    // Función para cargar un nuevo perro
-    fun loadNewDog() {
-        isLoading = true // Establecer el estado de carga como verdadero
+    fun cargarNuevoPerro() {
+        isLoading = true
         coroutineScope.launch(Dispatchers.IO) {
             val response = RandomDogApi.retrofitService.getRandomDogMedia()
             dogMediaUrl = response.url
             isVideo = dogMediaUrl.endsWith(".mp4") || dogMediaUrl.endsWith(".webm")
-            isLoading = false // Establecer el estado de carga como falso cuando se haya completado
+            isLoading = false
         }
     }
 
     // Llamamos a loadNewDog al cargar la pantalla por primera vez
     LaunchedEffect(Unit) {
-        loadNewDog()
+        cargarNuevoPerro()
     }
 
     Box(
@@ -134,7 +133,7 @@ fun PantallaPerro() {
                 Spacer(modifier = Modifier.height(16.dp))
 
                 // Botón para cargar un nuevo perro
-                Button(onClick = { loadNewDog() }) {
+                Button(onClick = { cargarNuevoPerro() }) {
                     Text(text = "Ver otro perro")
                 }
             }
