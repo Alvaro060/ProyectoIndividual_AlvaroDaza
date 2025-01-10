@@ -4,16 +4,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-// Interfaz para la API de perros aleatorios
-interface RandomDogApiService {
+interface InterfazRandomDogApi {
     @GET("woof.json")
-    suspend fun getRandomDogMedia(): RandomDogResponse
+    suspend fun getRandomDogMedia(): RespuestaRandomDog
 }
 
-// Data class para la respuesta de la API
-data class RandomDogResponse(val url: String)
+data class RespuestaRandomDog(val url: String)
 
-// Objeto para la configuración de Retrofit
 object RandomDogApi {
     private const val BASE_URL = "https://random.dog/"
 
@@ -23,7 +20,7 @@ object RandomDogApi {
         .build()
 
     // Instancia de la API
-    val retrofitService: RandomDogApiService by lazy {
-        retrofit.create(RandomDogApiService::class.java)
+    val retrofitService: InterfazRandomDogApi by lazy {
+        retrofit.create(InterfazRandomDogApi::class.java)
     }
 }
